@@ -2,6 +2,7 @@
 // where your node app starts
 
 // init project
+require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
@@ -35,7 +36,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/success', (request, response) => {
-  response.render('success');
+  response.render('success', { message: request.flash('success') });
 });
 
 app.get('/error', (request, response) => {
